@@ -34,8 +34,8 @@ let deck = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 
 
 const EventHandlers= {
     generateDeck: () => {
-    for( let card of App.fullDeck) {
-        
+    for( let card in App.shuffle) {
+        console.log(card)
         App.deck1.push($('<div>' + card + " " + App.suitH + '</div>'));
         // const $suit2 = $('<div>' + card + " " + App.suitD + '</div>');
         // const $suit3 = $('<div>' + card + " " + App.suitC + '</div>');
@@ -55,18 +55,19 @@ const EventHandlers= {
         
 
           (deck) => {
-            console.log(deck)
-        //     var i = 0
-        //       , j = 0
-        //       , temp = null
+             console.log(deck)
+             let i = 0
+               , j = 0
+               , temp = null
           
-        //     for (i = deck.length - 1; i > 0; i -= 1) {
-        //       j = Math.floor(Math.random() * (i + 1))
-        //       temp = array[i]
-        //       array[i] = array[j]
-        //       array[j] = temp
-        //     }
-        //     console.log(temp)
+             for (i = deck.length - 1; i > 0; i -= 1) {
+               j = Math.floor(Math.random() * (i + 1))
+               temp = deck[i]
+               deck[i] = deck[j]
+               deck[j] = temp
+               App.shuffle = temp
+             }
+             console.log(temp)
            }
 
         }            
@@ -78,7 +79,7 @@ const UI = {
 }
 
 const App = {
-    fullDeck:  ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', /*'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'*/],
+    fullDeck:  ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'],
     suitH: 'heart',
     suitD: 'diamond',
     suitC: 'club',
@@ -93,7 +94,8 @@ $( () => {
 
     // EventHandlers.generateDeck()
     // EventHandlers.generateDeck()
-    EventHandlers.shuffleDeck()
+    EventHandlers.shuffleDeck(App.fullDeck)
+    EventHandlers.generateDeck(EventHandlers.shuffleDeck)
 
 
 });
