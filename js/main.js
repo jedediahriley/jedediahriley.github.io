@@ -33,12 +33,24 @@
 let randomNumber;
 // let deck = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
 
+const deal = () => {
+    console.log('test')
+    for(let i = 0; i < 2; i++) {
+        let shiftedPlayer = $('#deck > div:first').remove()
+        let shiftedComp = $('#deck > div:first').remove()
+        $('#player').append(shiftedPlayer)
+        $('#dealer').append(shiftedComp)
+        
+        }
+        
+}
+
 
 const EventHandlers= {
     // create deck
     generateDeck: (deck) => {
     for( let card of deck) {
-        console.log(card)
+        
         App.deck1.push($('<div>' + card + " " + App.suitH + '</div>'));
         App.deck2.push($('<div>' + card + " " + App.suitD + '</div>'));
         App.deck3.push($('<div>' + card + " " + App.suitC + '</div>'));
@@ -56,7 +68,7 @@ const EventHandlers= {
 
           (deck) => {
               
-             console.log(deck)
+             
              let i = 0
                , j = 0
                , temp = null
@@ -69,31 +81,30 @@ const EventHandlers= {
                deck[j] = temp
                App.shuffle.push(temp)
                $('#deck').append(App.shuffle)
-               console.log(App.shuffle)
+              
               
              }
              
            },
     
-    deal: (x) => {
-        for(i = 0; i < x; i++) {
-            App.shift.push(i);
-            $('player').append(App.shift)
-            console.log(App.shift)
+    // deal: () => {
+    //     console.log('test')
+    //     for(let i = 0; i < 2; i++) {
+    //         let shiftedPlayer = $('#deck > div:first').remove()
+    //         let shiftedComp = $('#deck > div:first').remove()
+    //         $('#player').append(shiftedPlayer)
+    //         $('#dealer').append(shiftedComp)
+    //         }
+    // },
 
-        }
-    },
-
-    dealButton: $('#deal').on('click', (event) => {
-        event.preventDefault();
-        this.addEventListener('click', App.deal)
-        event.currentTarget(alert('hello, world'))
-    }), 
+    // dealButton: $('#deal').on('click', (event) => {
+        
+    // }), 
 
 
 }            
 
-
+ 
 
 const UI = {
     a: false
@@ -113,20 +124,34 @@ const App = {
     preShuffle: [],
     shift: []
 
+
 }
 
-$( () => {
 
-   
-     
+
+// const deal = () => {
+//     console.log('test')
+//     // for(let i = 0; i < 2; i++) {
+//     //     let shiftedPlayer = $('#deck > div:first').remove()
+//     //     let shiftedComp = $('#deck > div:first').remove()
+//     //     $('#player').append(shiftedPlayer)
+//     //     $('#dealer').append(shiftedComp)
+        
+//     //     }
+        
+// }
+
+
+
+$( () => {
+    $('#deal').click(deal)
     EventHandlers.generateDeck(App.fullDeck)
     EventHandlers.shuffleDeck(App.preShuffle)
-    EventHandlers.deal($('#deck'))
     
-    for(let i = 0; i < 2; i++) {
-    let shiftedPlayer = $('#deck > div:first').remove()
-    let shiftedComp = $('#deck > div:first').remove()
-    $('#player').append(shiftedPlayer)
-    $('#dealer').append(shiftedComp)
-    }
+    
+    // EventHandlers.deal($('#deck'))
+    //  $('#deal').on('click', deal());
+    
+    
 });
+
