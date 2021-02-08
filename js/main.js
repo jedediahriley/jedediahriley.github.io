@@ -9,7 +9,7 @@
 
 [x] display decks of cards with suits
 
-[] shuffle cards
+[x] shuffle cards
     - randomize numbers to mix up the cards
     - make sure that the number doesn't repeat
     - associate the number with the deck value and place in a shuffle value 
@@ -20,19 +20,22 @@
     -write win/loss parameters
 
 [] create buttons 
-    - deal
-    - hit
-    - stand
-    - bet
+    [x] deal
+    [] hit
+    [] stand
+    [] bet
+
+[] create cut function
 
 */
 
 
 let randomNumber;
-let deck = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
+// let deck = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
 
 
 const EventHandlers= {
+    // create deck
     generateDeck: (deck) => {
     for( let card of deck) {
         console.log(card)
@@ -42,15 +45,7 @@ const EventHandlers= {
         App.deck4.push($('<div>' + card + " " + App.suitD + '</div>'));
         App.preShuffle.push(...App.deck1, ...App.deck2, ...App.deck3, ...App.deck4)
         $('#deck').append(App.preShuffle)
-        // $('#deck').append(App.deck1)
-        // $('#deck').append(App.deck2)
-        // $('#deck').append(App.deck3)
-        // $('#deck').append(App.deck4)
-           
-        //    console.log(App.deck1)
-        // $('#deck').append($suit2)
-        // $('#deck').append($suit3)
-        // $('#deck').append($suit4)
+        
         
         }
     },
@@ -60,23 +55,43 @@ const EventHandlers= {
         
 
           (deck) => {
+              
              console.log(deck)
              let i = 0
                , j = 0
                , temp = null
           
              for (i = App.preShuffle.length - 1; i > 0; i -= 1) {
-               j = Math.floor(Math.random() * (i + 1))
+               
+                j = Math.floor(Math.random() * (i + 1))
                temp = deck[i]
                deck[i] = deck[j]
                deck[j] = temp
-               $('#deck').append(temp)
-               
+               App.shuffle.push(temp)
+               $('#deck').append(App.shuffle)
+               console.log(App.shuffle)
+              
              }
-             console.log(App.shuffle)
-           }
+             
+           },
+    
+    deal: (x) => {
+        for(i = 0; i < x; i++) {
+            App.shift.push(i);
+            $('player').append(App.shift)
+            console.log(App.shift)
 
-        }            
+        }
+    },
+
+    dealButton: $('#deal').on('click', (event) => {
+        event.preventDefault();
+        this.addEventListener('click', App.deal)
+        event.currentTarget(alert('hello, world'))
+    }), 
+
+
+}            
 
 
 
@@ -95,17 +110,20 @@ const App = {
     deck3: [],
     deck4: [],
     shuffle: [],
-    preShuffle: []
+    preShuffle: [],
+    shift: []
 
 }
 
 $( () => {
 
-    // EventHandlers.generateDeck()
-    // EventHandlers.generateDeck()
+   
      
-      EventHandlers.generateDeck(App.fullDeck)
-     EventHandlers.shuffleDeck(App.preShuffle)
+    EventHandlers.generateDeck(App.fullDeck)
+    EventHandlers.shuffleDeck(App.preShuffle)
+    EventHandlers.deal($('#deck'))
     
-
+    let shifted = $('#deck > div:first').remove()
+    $('#player').append(shifted)
+    console.log(shifted)
 });
