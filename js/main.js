@@ -33,14 +33,19 @@ let deck = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 
 
 
 const EventHandlers= {
-    generateDeck: () => {
-    for( let card in App.shuffle) {
+    generateDeck: (deck) => {
+    for( let card of deck) {
         console.log(card)
         App.deck1.push($('<div>' + card + " " + App.suitH + '</div>'));
-        // const $suit2 = $('<div>' + card + " " + App.suitD + '</div>');
-        // const $suit3 = $('<div>' + card + " " + App.suitC + '</div>');
-        // const $suit4 = $('<div>' + card + " " + App.suitS + '</div>');
-        $('#deck').append(App.deck1)
+        App.deck2.push($('<div>' + card + " " + App.suitD + '</div>'));
+        App.deck3.push($('<div>' + card + " " + App.suitC + '</div>'));
+        App.deck4.push($('<div>' + card + " " + App.suitD + '</div>'));
+        App.preShuffle.push(...App.deck1, ...App.deck2, ...App.deck3, ...App.deck4)
+        $('#deck').append(App.preShuffle)
+        // $('#deck').append(App.deck1)
+        // $('#deck').append(App.deck2)
+        // $('#deck').append(App.deck3)
+        // $('#deck').append(App.deck4)
            
         //    console.log(App.deck1)
         // $('#deck').append($suit2)
@@ -60,14 +65,15 @@ const EventHandlers= {
                , j = 0
                , temp = null
           
-             for (i = deck.length - 1; i > 0; i -= 1) {
+             for (i = App.preShuffle.length - 1; i > 0; i -= 1) {
                j = Math.floor(Math.random() * (i + 1))
                temp = deck[i]
                deck[i] = deck[j]
                deck[j] = temp
-               App.shuffle = temp
+               $('#deck').append(temp)
+               
              }
-             console.log(temp)
+             console.log(App.shuffle)
            }
 
         }            
@@ -79,14 +85,17 @@ const UI = {
 }
 
 const App = {
-    fullDeck:  ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'],
+    fullDeck:  ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'],
     suitH: 'heart',
     suitD: 'diamond',
     suitC: 'club',
     suitS: 'spade',
     deck1: [],
     deck2: [],
-    shuffle: []
+    deck3: [],
+    deck4: [],
+    shuffle: [],
+    preShuffle: []
 
 }
 
@@ -94,8 +103,9 @@ $( () => {
 
     // EventHandlers.generateDeck()
     // EventHandlers.generateDeck()
-    EventHandlers.shuffleDeck(App.fullDeck)
-    EventHandlers.generateDeck(EventHandlers.shuffleDeck)
-
+     
+      EventHandlers.generateDeck(App.fullDeck)
+     EventHandlers.shuffleDeck(App.preShuffle)
+    
 
 });
