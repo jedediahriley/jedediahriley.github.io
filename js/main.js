@@ -42,7 +42,7 @@ const EventHandlers= {
         App.deck1.push($('<div>' + card + " " + App.suitH + '</div>'));
         App.deck2.push($('<div>' + card + " " + App.suitD + '</div>'));
         App.deck3.push($('<div>' + card + " " + App.suitC + '</div>'));
-        App.deck4.push($('<div>' + card + " " + App.suitD + '</div>'));
+        App.deck4.push($('<div>' + card + " " + App.suitS + '</div>'));
         App.preShuffle.push(...App.deck1, ...App.deck2, ...App.deck3, ...App.deck4)
         $('#deck').append(App.preShuffle)
         
@@ -123,7 +123,10 @@ $( () => {
     EventHandlers.shuffleDeck(App.preShuffle)
     EventHandlers.deal($('#deck'))
     
-    let shifted = $('#deck > div:first').remove()
-    $('#player').append(shifted)
-    console.log(shifted)
+    for(let i = 0; i < 2; i++) {
+    let shiftedPlayer = $('#deck > div:first').remove()
+    let shiftedComp = $('#deck > div:first').remove()
+    $('#player').append(shiftedPlayer)
+    $('#dealer').append(shiftedComp)
+    }
 });
