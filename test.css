@@ -1,3 +1,15 @@
 body {
     background: green;
 }
+
+#player {
+    height: 200px;
+    width: 200px;
+    border: 1px solid black
+}
+
+#dealer {
+    height: 200px;
+    width: 200px;
+    border: 1px solid black
+}

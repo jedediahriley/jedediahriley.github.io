@@ -429,14 +429,14 @@ const deal = () => {
     for(let i = 0; i < 2; i++) {
         playerDeal.push(fullDeck.pop())
         compDeal.push(fullDeck.pop())
-        
+        $('#player').append(playerDeal)
         }
-        console.log(playerDeal)
-        console.log(compDeal)
+        console.log('test')
+        // console.log(compDeal)
 }
 
-deal()
-console.log(fullDeck)
+// deal()
+// console.log(fullDeck)
 
 const evaluate = () => {
     compScore = compDeal[0].face + compDeal[1].face
@@ -469,7 +469,7 @@ const evaluate = () => {
 
 }       
 
-evaluate()
+// evaluate()
 
 const playerHit = () => {
     playerDeal.push(fullDeck.pop())
@@ -484,7 +484,7 @@ const playerHit = () => {
 
 } 
 
-playerHit()
+// playerHit()
 
 const computerHit = () => {
     compDeal.push(fullDeck.pop())
@@ -499,4 +499,10 @@ const computerHit = () => {
 
 }
 
-computerHit()
+// computerHit()
+
+$( () => {
+
+    $('#deal').click(deal())
+
+})
