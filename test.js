@@ -404,26 +404,26 @@ const Deck = [
 
 
 // console.log(Deck)
-const shuffle = (arr) => {
-    for(let card of Deck) {
-        let pop = card
-        let randNum = Math.floor(Math.random() * 53)
-            arr.splice(randNum, 0, pop)
+// const shuffle = (arr) => {
+//     for(let card of Deck) {
+//         let pop = card
+//         let randNum = Math.floor(Math.random() * 53)
+//             arr.splice(randNum, 0, pop)
             
         
 
             
-    }
+//     }
     
    
-}
+// }
 
-shuffle(shuffled)
-console.log(shuffled)
-shuffle(shuffled2)
-console.log(shuffled2)
-fullDeck.push(...shuffled, ...shuffled2)
-console.log(fullDeck)
+// shuffle(shuffled)
+// console.log(shuffled)
+// shuffle(shuffled2)
+// console.log(shuffled2)
+// fullDeck.push(...shuffled, ...shuffled2)
+// console.log(fullDeck)
 
 const deal = () => {
     for(let i = 0; i < 2; i++) {
@@ -450,7 +450,7 @@ const evaluate = () => {
             console.log('Computer has 21') 
         }else if(compDeal[0].face + compDeal[1].face === 'A10' || compDeal[0].face + compDeal[1].face === '10A') {
             console.log('Computer has 21') 
-         }else 
+        }else 
             console.log('Computer has ' + compScore)
     
         if(playerDeal[0].face + playerDeal[1].face === 'AK' || playerDeal[0].face + playerDeal[1].face === 'KA') {
@@ -501,8 +501,33 @@ const computerHit = () => {
 
 // computerHit()
 
-$( () => {
+const begin = () => {
+    const shuffle = (arr) => {
+        for(let card of Deck) {
+            let pop = card
+            let randNum = Math.floor(Math.random() * 53)
+                arr.splice(randNum, 0, pop)
+                
+            
+    
+                
+        }
+    
+    }
+    
+    shuffle(shuffled)
+    console.log(shuffled)
+    shuffle(shuffled2)
+    console.log(shuffled2)
+    fullDeck.push(...shuffled, ...shuffled2)
+    console.log(fullDeck)
+}
 
-    $('#deal').click(deal())
+
+$( () => {
+    const $begin = $('#begin')
+    $begin.on('click', begin)
+    
 
 })
+
