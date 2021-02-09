@@ -477,7 +477,9 @@ const evaluate = () => {
 const playerHit = () => {
     playerDeal.push(fullDeck.pop())
     console.log(playerDeal)
-    playerScore = playerScore + playerDeal[2].face
+    let hit = playerDeal[2].face
+    const $player = $('#player')
+    $player.append(hit)
     
     
         if(playerDeal[0].value + playerDeal[1].value + playerDeal[2].value > 21 ) {
