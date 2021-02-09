@@ -15,6 +15,10 @@ let shuffled = [];
 let shuffled2 = [];
 let fullDeck = [];
 let x;
+let playerDeal = [];
+let compDeal = [];
+let compScore;
+let playerScore;
 
 const Deck = [
     ace = {
@@ -420,3 +424,37 @@ shuffle(shuffled2)
 console.log(shuffled2)
 fullDeck.push(...shuffled, ...shuffled2)
 console.log(fullDeck)
+
+const deal = () => {
+    for(let i = 0; i < 2; i++) {
+        playerDeal.push(fullDeck.pop())
+        compDeal.push(fullDeck.pop())
+        
+        }
+        console.log(playerDeal)
+        console.log(compDeal)
+}
+
+deal()
+console.log(fullDeck)
+
+const evaluate = () => {
+    compScore = compDeal[0].value 
+    playerScore = playerDeal[0].value + playerDeal[1].value
+    console.log('Comp showing ' + compScore)
+    console.log('Player has ' + playerScore)
+}   
+
+evaluate()
+
+const playerHit = () => {
+    playerDeal.push(fullDeck.pop())
+    console.log(playerDeal)
+    playerScore = playerScore + playerDeal[2].value
+    console.log(compScore)
+    console.log(playerScore)
+
+} 
+
+playerHit()
+
