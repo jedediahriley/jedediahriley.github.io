@@ -478,7 +478,7 @@ const playerHit = () => {
     playerDeal.push(fullDeck.pop())
     console.log(playerDeal)
     playerScore = playerScore + playerDeal[2].face
-    console.log(compScore)
+    
     
         if(playerDeal[0].value + playerDeal[1].value + playerDeal[2].value > 21 ) {
             console.log('Player Busted!')
@@ -533,6 +533,9 @@ $( () => {
 
     const $deal = $('#deal')
     $deal.on('click', deal)
+
+    const $hit = $('#hit')
+    $hit.on('click', playerHit)
     
 
 })
