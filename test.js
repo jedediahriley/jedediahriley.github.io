@@ -429,10 +429,11 @@ const deal = () => {
     for(let i = 0; i < 2; i++) {
         playerDeal.push(fullDeck.pop())
         compDeal.push(fullDeck.pop())
-        $('#player').append(playerDeal)
+        const $player = $('#player')
+        $player.append(playerDeal[i].face)
         }
-        console.log('test')
-        // console.log(compDeal)
+        console.log(playerDeal)
+        console.log(compDeal)
 }
 
 // deal()
