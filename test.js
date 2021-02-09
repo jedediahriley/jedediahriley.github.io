@@ -430,7 +430,9 @@ const deal = () => {
         playerDeal.push(fullDeck.pop())
         compDeal.push(fullDeck.pop())
         const $player = $('#player')
-        $player.append(playerDeal[i].face)
+        $player.append('<div class = "playerCards">' + playerDeal[i].face +'</div>')
+        const $dealer = $('#dealer')
+        $dealer.append('<div class ="dealerCards">' + compDeal[i].face + '</div>')
         }
         console.log(playerDeal)
         console.log(compDeal)
