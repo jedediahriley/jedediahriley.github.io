@@ -439,11 +439,34 @@ deal()
 console.log(fullDeck)
 
 const evaluate = () => {
-    compScore = compDeal[0].value 
-    playerScore = playerDeal[0].value + playerDeal[1].value
-    console.log('Comp showing ' + compScore)
-    console.log('Player has ' + playerScore)
-}   
+    compScore = compDeal[0].face + compDeal[1].face
+    playerScore = playerDeal[0].face + playerDeal[1].face
+    
+    
+        if(playerDeal[0].face + playerDeal[1].face === 'AK' || playerDeal[0].face + playerDeal[1].face === 'KA') {
+            console.log('Player has 21')
+        }else if(playerDeal[0].face + playerDeal[1].face === 'AQ' || playerDeal[0].face + playerDeal[1].face === 'QA') {
+            console.log('Player has 21')
+        }else if(playerDeal[0].face + playerDeal[1].face === 'AJ' || playerDeal[0].face + playerDeal[1].face === 'JA') {
+            console.log('Player has 21')
+        }else if(playerDeal[0].face + playerDeal[1].face === 'A10' || playerDeal[0].face + playerDeal[1].face === '10A') {
+            console.log('Player has 21')
+        }else 
+        console.log('Player has ' + playerScore)
+
+        if(compDeal[0].face + compDeal[1].face === 'AK' || compDeal[0].face + compDeal[1].face === 'KA') {
+            console.log('Computer has 21')
+        }else if(compDeal[0].face + compDeal[1].face === 'AQ' || compDeal[0].face + compDeal[1].face === 'QA') {
+            console.log('Computer has 21')
+        }else if(compDeal[0].face + compDeal[1].face === 'AJ' || compDeal[0].face + compDeal[1].face === 'JA') {
+            console.log('Computer has 21') 
+        }else if(compDeal[0].face + compDeal[1].face === 'A10' || compDeal[0].face + compDeal[1].face === '10A') {
+            console.log('Computer has 21') 
+        }else 
+        console.log('Computer has ' + compScore)
+            
+
+}       
 
 evaluate()
 
@@ -457,4 +480,6 @@ const playerHit = () => {
 } 
 
 playerHit()
+
+
 
