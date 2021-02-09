@@ -21,6 +21,7 @@
 
 [] create buttons 
     [x] deal
+        [] display scores (i.e 'player has 20')
     [] hit
     [] stand
     [] bet
@@ -33,17 +34,17 @@
 let randomNumber;
 // let deck = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
 
-const deal = () => {
-    console.log('test')
-    for(let i = 0; i < 2; i++) {
-        let shiftedPlayer = $('#deck > div:first').remove()
-        let shiftedComp = $('#deck > div:first').remove()
-        $('#player').append(shiftedPlayer)
-        $('#dealer').append(shiftedComp)
+// const deal = () => {
+//     console.log('test')
+//     for(let i = 0; i < 2; i++) {
+//         let shiftedPlayer = $('#deck > div:first').remove()
+//         let shiftedComp = $('#deck > div:first').remove()
+//         $('#player').append(shiftedPlayer)
+//         $('#dealer').append(shiftedComp)
         
-        }
+//         }
         
-}
+// }
 
 
 const EventHandlers= {
@@ -66,16 +67,16 @@ const EventHandlers= {
     shuffleDeck: 
         
 
-          (deck) => {
+        (deck) => {
               
              
-             let i = 0
+            let i = 0
                , j = 0
                , temp = null
           
-             for (i = App.preShuffle.length - 1; i > 0; i -= 1) {
+            for (i = App.preShuffle.length - 1; i > 0; i -= 1) {
                
-                j = Math.floor(Math.random() * (i + 1))
+               j = Math.floor(Math.random() * (i + 1))
                temp = deck[i]
                deck[i] = deck[j]
                deck[j] = temp
@@ -83,23 +84,31 @@ const EventHandlers= {
                $('#deck').append(App.shuffle)
               
               
-             }
+            }
              
-           },
+        },
     
-    // deal: () => {
-    //     console.log('test')
-    //     for(let i = 0; i < 2; i++) {
-    //         let shiftedPlayer = $('#deck > div:first').remove()
-    //         let shiftedComp = $('#deck > div:first').remove()
-    //         $('#player').append(shiftedPlayer)
-    //         $('#dealer').append(shiftedComp)
-    //         }
-    // },
-
-    // dealButton: $('#deal').on('click', (event) => {
+    deal: () => {
         
-    // }), 
+        for(let i = 0; i < 2; i++) {
+            App.shiftedPlayer.push($('#deck > div:first').remove())
+            App.shiftedComp = $('#deck > div:first').remove()
+            $('#player').append(App.shiftedPlayer)
+            $('#dealer').append(App.shiftedComp)
+            }
+            EventHandlers.evaluate()
+    },
+
+    evaluate: () => {
+        console.log(App.shiftedComp[0])
+        let eValStr = App.shiftedComp.toString().valueOf()
+        console.log(eValStr)
+        let x = App.shiftedPlayer.values()
+            for(let a of x) {
+                console.log(a)
+            }
+        
+    },
 
 
 }            
@@ -122,31 +131,24 @@ const App = {
     deck4: [],
     shuffle: [],
     preShuffle: [],
-    shift: []
-
+    shift: [],
+    cEval: [],
+    shiftedComp: [],
+    shiftedPlayer: [],
 
 }
 
 
 
-// const deal = () => {
-//     console.log('test')
-//     // for(let i = 0; i < 2; i++) {
-//     //     let shiftedPlayer = $('#deck > div:first').remove()
-//     //     let shiftedComp = $('#deck > div:first').remove()
-//     //     $('#player').append(shiftedPlayer)
-//     //     $('#dealer').append(shiftedComp)
-        
-//     //     }
-        
-// }
+
 
 
 
 $( () => {
-    $('#deal').click(deal)
+    $('#deal').click(EventHandlers.deal)
     EventHandlers.generateDeck(App.fullDeck)
     EventHandlers.shuffleDeck(App.preShuffle)
+    
     
     
     // EventHandlers.deal($('#deck'))
