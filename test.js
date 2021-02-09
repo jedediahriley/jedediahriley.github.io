@@ -527,6 +527,9 @@ const begin = () => {
 $( () => {
     const $begin = $('#begin')
     $begin.on('click', begin)
+
+    const $deal = $('#deal')
+    $deal.on('click', deal)
     
 
 })
