@@ -20,6 +20,8 @@ let compDeal = [];
 let compScore;
 let playerScore;
 let playerValue;
+let dealerScore;
+let dealerValue;
 
 const Deck = [
     ace = {
@@ -448,7 +450,10 @@ const deal = () => {
         $dealer.append('<div class ="dealerCards">' + compDeal[i].suit + '</div>')
         }
 
-       console.log(playerValue = playerDeal[0].value + playerDeal[1].value)
+    playerValue = playerDeal[0].value + playerDeal[1].value
+    $('#playerScore').append(playerValue)
+    dealerValue = compDeal[0].value + compDeal[1].value
+    $('#dealerScore').append(dealerValue)
         
         console.log(playerDeal)
         console.log(compDeal)
