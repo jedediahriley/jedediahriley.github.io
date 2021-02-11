@@ -495,25 +495,39 @@ const evaluate = () => {
 
 // evaluate()
 
-const playerHit = () => {
-    playerDeal.push(fullDeck.pop())
-    console.log(playerDeal)
-    let hit = playerDeal[2].face
-    const $player = $('#player')
-    $player.append(hit)
-    let playerValue = 0;
+// const playerHit = () => {
 
-    for(i = 0; i < playerDeal.length; i++) {
-        playerValue += playerDeal[i].value
-        if(playerValue > 21 ) {
-            console.log('Player Busted!')
-            return
-        }else
-            console.log(playerValue)
-    }
-} 
+    
+//     playerDeal.push(fullDeck.pop())
+//     console.log(playerDeal)
+//     let hit = playerDeal.face
+//     console.log(hit)
+//     const $player = $('#player')
+//     $player.append(hit)
+//     // let playerValue = 0;
+
+//     for(i = 0; i < playerDeal.length; i++) {
+        
+//         playerValue += playerDeal[i].value
+//         if(playerValue > 21 ) {
+//             alert('Player Busted')
+//             $player.append(hit)
+//             return
+//         }else
+//             $player.append(playerValue)
+//     }
+// } 
 
 // playerHit()
+
+
+const hit = () => {
+    if(playerValue != 21) {
+        let playerHit.push() = fullDeck.pop()
+        console.log(playerValue)
+        $('#player').append(playerHit)
+    }
+}
 
 const computerHit = () => {
     compDeal.push(fullDeck.pop())
@@ -521,8 +535,9 @@ const computerHit = () => {
     compScore = compScore + compDeal[2].face
     
 
-    if(playerDeal[0].value + playerDeal[1].value + playerDeal[2].value > 21 ) {
+    if(compDeal[0].value + compDeal[1].value + compDeal[2].value > 21 ) {
         console.log('Dealer Busted!')
+        return
     }else
         console.log(compScore)
 
@@ -565,7 +580,10 @@ $( () => {
     $deal.on('click', deal)
 
     const $hit = $('#hit')
-    $hit.on('click', playerHit)
+    $hit.on('click', hit)
+
+    const $stand = $('#stand')
+    $stand.on('click', computerHit)
 
     
     
