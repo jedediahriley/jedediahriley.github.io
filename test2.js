@@ -367,14 +367,22 @@ const begin = () => {
 Dealing the cards
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const deal = () => {
-        
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Emptying the player/dealer areas and the player/dealer score
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    
     $('#player').empty()
     $('#dealer').empty()
     $('#player').text('Player')
     $('#dealer').text('Dealer')
+    $('#playerScore').empty()
+    $('#dealerScore').empty()
+    $('#playerScore').text('Player Score')
+    $('#dealerScore').text('Dealer Score')
     playerDeal = [];
     compDeal = [];
-    // $('#dealer > div:first').remove().appendTo($('discard'))
+    
 
 for(let i = 0; i < 2; i++) {
 console.log(fullDeck)
