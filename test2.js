@@ -397,18 +397,27 @@ $dealer.append('<div class ="dealerCards">' + compDeal[i].face + '</div>')
 $dealer.append('<div class ="dealerCards">' + compDeal[i].suit + '</div>')
 }
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Determining Dealer's score if it has an ace
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 if(compDeal[0].face === 'A' && compDeal[1].face ==='A') {
-    
     $('#dealerScore').text('Dealer has 2 or 12')
-
 }else if(compDeal[0].face === 'A') {
-   
     $('#dealerScore').append((compDeal[0].value1 + compDeal[1].value) + ' or ' + (compDeal[0].value11 + compDeal[1].value))
-
-}else if(compDeal[1].face === 'A') {
-    
+}else if(compDeal[1].face === 'A') { 
     $('#dealerScore').append((compDeal[1].value1 + compDeal[0].value) + ' or ' + (compDeal[1].value11 + compDeal[0].value))
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Determining Player's score if it has an ace
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+if(playerDeal[0].face === 'A' && playerDeal[1].face ==='A') {
+    $('#playerScore').text('Player has 2 or 12')
+}else if(playerDeal[0].face === 'A') {
+    $('#playerScore').append((playerDeal[0].value1 + playerDeal[1].value) + ' or ' + (playerDeal[0].value11 + playerDeal[1].value))
+}else if(playerDeal[1].face === 'A') { 
+    $('#playerScore').append((playerDeal[1].value1 + playerDeal[0].value) + ' or ' + (playerDeal[1].value11 + playerDeal[0].value))
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -462,13 +471,11 @@ if(playerDeal[0].face + playerDeal[1].face === 'AK' || playerDeal[0].face + play
     $('#playerScore').empty()
     $('#playerScore').append('Player has 21')
     return
-}else 
+}else {
     playerValue = playerDeal[0].value + playerDeal[1].value
     $('#playerScore').append(playerValue)
+}
 
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Determining Dealer's score if it has an ace
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 // if(compDeal[0].face === 'A' && compDeal[1].face ==='A') {
 //     console.log('458')
