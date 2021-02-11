@@ -4,7 +4,6 @@ Global Variables
 let shuffled = [];
 let shuffled2 = [];
 let fullDeck = [];
-let x;
 let playerDeal = [];
 let compDeal = [];
 let compScore;
@@ -12,6 +11,8 @@ let playerScore;
 let playerValue;
 let dealerScore;
 let dealerValue;
+let playerHit = [];
+let compHit = [];
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The Deck of Cards
@@ -430,7 +431,7 @@ if(compDeal[0].face + compDeal[1].face === 'AK' || compDeal[0].face + compDeal[1
     
     $('#dealerScore').empty()
     $('#dealerScore').append('Dealer has 21')
-   
+    
 }else if(compDeal[0].face + compDeal[1].face === 'AQ' || compDeal[0].face + compDeal[1].face === 'QA') {
     
     $('#dealerScore').empty()
@@ -477,21 +478,21 @@ if(playerDeal[0].face + playerDeal[1].face === 'AK' || playerDeal[0].face + play
 }
 
 
-// if(compDeal[0].face === 'A' && compDeal[1].face ==='A') {
-//     console.log('458')
-//     $('#dealerScore').text('Dealer has 2 or 12')
-
-// }else if(compDeal[0].face === 'A') {
-//     console.log('462')
-//     $('#dealerScore').append(compDeal[0].value1 + compDeal[1].value) + ' or ' + (compDeal[0].value11 + compDeal[1].value)
-
-// }else if(compDeal[1].face === 'A') {
-//     console.log('465')
-//     $('#dealerScore').append(compDeal[1].value1 + compDeal[0].value) + ' or ' + (compDeal[1].value11 + compDeal[0].value)
-// }
-
 }
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Evaluating if Player's score for a hit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+const hit = () => {
+    playerHit.push(fullDeck.pop())
+    console.log(playerHit[0].value)
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Hit if player has A/A
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+}
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -510,6 +511,13 @@ Deal Button
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const $deal = $('#deal')
 $deal.on('click', deal)
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Hit Button
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+const $hit = $('#hit')
+$hit.on('click', hit)
 
 
 
