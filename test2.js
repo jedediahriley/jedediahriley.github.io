@@ -356,11 +356,9 @@ const begin = () => {
     }
     
     shuffle(shuffled)
-    console.log(shuffled)
     shuffle(shuffled2)
-    console.log(shuffled2)
     fullDeck.push(...shuffled, ...shuffled2)
-    console.log(fullDeck)
+    
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -383,9 +381,12 @@ Emptying the player/dealer areas and the player/dealer score
     playerDeal = [];
     compDeal = [];
     
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Loop that populates the decks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 for(let i = 0; i < 2; i++) {
-console.log(fullDeck)
+
 playerDeal.push(fullDeck.pop())
 compDeal.push(fullDeck.pop())
 const $player = $('#player')
@@ -396,13 +397,43 @@ $dealer.append('<div class ="dealerCards">' + compDeal[i].face + '</div>')
 $dealer.append('<div class ="dealerCards">' + compDeal[i].suit + '</div>')
 }
 
-playerValue = playerDeal[0].value + playerDeal[1].value
-$('#playerScore').append(playerValue)
-dealerValue = compDeal[0].value + compDeal[1].value
-$('#dealerScore').append(dealerValue)
+// playerValue = playerDeal[0].value + playerDeal[1].value
+// $('#playerScore').append(playerValue)
+// dealerValue = compDeal[0].value + compDeal[1].value
+// $('#dealerScore').append(dealerValue)
 
-console.log(playerDeal)
-console.log(compDeal)
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Evaluating if first two cards are blackjack
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+compScore = compDeal[0].face + compDeal[1].face
+playerScore = playerDeal[0].face + playerDeal[1].face
+
+if(compDeal[0].face + compDeal[1].face === 'AK' || compDeal[0].face + compDeal[1].face === 'KA') {
+    $('#dealerScore').append('Dealer has 21')
+}else if(compDeal[0].face + compDeal[1].face === 'AQ' || compDeal[0].face + compDeal[1].face === 'QA') {
+    $('#dealerScore').append('Dealer has 21')
+}else if(compDeal[0].face + compDeal[1].face === 'AJ' || compDeal[0].face + compDeal[1].face === 'JA') {
+    $('#dealerScore').append('Dealer has 21') 
+}else if(compDeal[0].face + compDeal[1].face === 'A10' || compDeal[0].face + compDeal[1].face === '10A') {
+    $('#dealerScore').append('Dealer has 21') 
+}else
+    dealerValue = compDeal[0].value + compDeal[1].value
+    $('#dealerScore').append(dealerValue)
+    
+
+
+if(playerDeal[0].face + playerDeal[1].face === 'AK' || playerDeal[0].face + playerDeal[1].face === 'KA') {
+    $('#playerScore').append('Dealer has 21') 
+}else if(playerDeal[0].face + playerDeal[1].face === 'AQ' || playerDeal[0].face + playerDeal[1].face === 'QA') {
+    $('#playerScore').append('Dealer has 21') 
+}else if(playerDeal[0].face + playerDeal[1].face === 'AJ' || playerDeal[0].face + playerDeal[1].face === 'JA') {
+    $('#playerScore').append('Dealer has 21')
+}else if(playerDeal[0].face + playerDeal[1].face === 'A10' || playerDeal[0].face + playerDeal[1].face === '10A') {
+    $('#playerScore').append('Dealer has 21')
+}else 
+    playerValue = playerDeal[0].value + playerDeal[1].value
+    $('#playerScore').append(playerValue)
+
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
