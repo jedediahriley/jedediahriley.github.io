@@ -426,6 +426,10 @@ const Deck = [
 // console.log(fullDeck)
 
 const deal = () => {
+        
+            $('#player').remove()
+            // $('#dealer > div:first').remove().appendTo($('discard'))
+
     for(let i = 0; i < 2; i++) {
         playerDeal.push(fullDeck.pop())
         compDeal.push(fullDeck.pop())
@@ -480,13 +484,16 @@ const playerHit = () => {
     let hit = playerDeal[2].face
     const $player = $('#player')
     $player.append(hit)
-    
-    
-        if(playerDeal[0].value + playerDeal[1].value + playerDeal[2].value > 21 ) {
+    let playerValue = 0;
+
+    for(i = 0; i < playerDeal.length; i++) {
+        playerValue += playerDeal[i].value
+        if(playerValue > 21 ) {
             console.log('Player Busted!')
+            return
         }else
             console.log(playerScore)
-
+    }
 } 
 
 // playerHit()
