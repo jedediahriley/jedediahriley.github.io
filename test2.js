@@ -484,13 +484,35 @@ if(playerDeal[0].face + playerDeal[1].face === 'AK' || playerDeal[0].face + play
 Evaluating if Player's score for a hit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const hit = () => {
+    playerHit= [];
     playerHit.push(fullDeck.pop())
-    console.log(playerHit[0].value)
+    $('#player').append(playerHit[0].face)
+    $('#player').append(playerHit[0].suit)
+    console.log(playerHit.value)
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Hit if player has A/A
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
+if(playerDeal[0].face === 'A' && playerDeal[1].face ==='A') {
+    $('#playerScore').empty()
+    $('#playerScore').append((playerDeal[0].value1 + playerHit.value) + ' or ' + (playerDeal[1].value11 + playerHit.value))
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Hit if player has A/off
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+}else if(playerDeal[0].face === 'A') {
+    $('#playerScore').empty()
+    $('#playerScore').text('Player Score')
+    let aOne = (playerDeal[0].value1 + playerDeal[1].value) + playerHit[0].value
+    let aTwo = (playerDeal[0].value11 + playerDeal[1].value) + playerHit[0].value
+    $('#playerScore').append((aOne) + ' or ' + (aTwo))
+}else if(playerDeal[1].face === 'A') {
+    $('#playerScore').empty()
+    $('#playerScore').text('Player Score')
+    let aOne = (playerDeal[1].value1 + playerDeal[0].value) + playerHit[0].value
+    let aTwo = (playerDeal[1].value11 + playerDeal[0].value) + playerHit[0].value
+    $('#playerScore').append((aOne) + ' or ' + (aTwo))
+    
+}
 
 }
 
