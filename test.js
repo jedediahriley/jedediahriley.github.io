@@ -427,10 +427,13 @@ const Deck = [
 
 const deal = () => {
         
-            $('#player').remove()
+             $('#player').empty()
+             $('#player').text('Player')
+             playerDeal = [];
             // $('#dealer > div:first').remove().appendTo($('discard'))
 
     for(let i = 0; i < 2; i++) {
+        console.log(fullDeck)
         playerDeal.push(fullDeck.pop())
         compDeal.push(fullDeck.pop())
         const $player = $('#player')
@@ -533,6 +536,10 @@ const begin = () => {
     console.log(shuffled2)
     fullDeck.push(...shuffled, ...shuffled2)
     console.log(fullDeck)
+}
+
+const stand = () => {
+
 }
 
 
