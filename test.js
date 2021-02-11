@@ -427,9 +427,12 @@ const Deck = [
 
 const deal = () => {
         
-             $('#player').empty()
-             $('#player').text('Player')
-             playerDeal = [];
+            $('#player').empty()
+            $('#dealer').empty()
+            $('#player').text('Player')
+            $('#dealer').text('Dealer')
+            playerDeal = [];
+            compDeal = [];
             // $('#dealer > div:first').remove().appendTo($('discard'))
 
     for(let i = 0; i < 2; i++) {
@@ -495,7 +498,7 @@ const playerHit = () => {
             console.log('Player Busted!')
             return
         }else
-            console.log(playerScore)
+            console.log(playerValue)
     }
 } 
 
@@ -514,7 +517,7 @@ const computerHit = () => {
 
 }
 
-// computerHit()
+ 
 
 const begin = () => {
     const shuffle = (arr) => {
@@ -552,6 +555,8 @@ $( () => {
 
     const $hit = $('#hit')
     $hit.on('click', playerHit)
+
+    computerHit()
     
 
 })
