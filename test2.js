@@ -397,44 +397,95 @@ $dealer.append('<div class ="dealerCards">' + compDeal[i].face + '</div>')
 $dealer.append('<div class ="dealerCards">' + compDeal[i].suit + '</div>')
 }
 
-// playerValue = playerDeal[0].value + playerDeal[1].value
-// $('#playerScore').append(playerValue)
-// dealerValue = compDeal[0].value + compDeal[1].value
-// $('#dealerScore').append(dealerValue)
+
+if(compDeal[0].face === 'A' && compDeal[1].face ==='A') {
+    
+    $('#dealerScore').text('Dealer has 2 or 12')
+
+}else if(compDeal[0].face === 'A') {
+   
+    $('#dealerScore').append((compDeal[0].value1 + compDeal[1].value) + ' or ' + (compDeal[0].value11 + compDeal[1].value))
+
+}else if(compDeal[1].face === 'A') {
+    
+    $('#dealerScore').append((compDeal[1].value1 + compDeal[0].value) + ' or ' + (compDeal[1].value11 + compDeal[0].value))
+}
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Evaluating if first two cards are blackjack
+Evaluating if Dealer's first two cards are blackjack
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 compScore = compDeal[0].face + compDeal[1].face
 playerScore = playerDeal[0].face + playerDeal[1].face
 
 if(compDeal[0].face + compDeal[1].face === 'AK' || compDeal[0].face + compDeal[1].face === 'KA') {
+    
+    $('#dealerScore').empty()
     $('#dealerScore').append('Dealer has 21')
+   
 }else if(compDeal[0].face + compDeal[1].face === 'AQ' || compDeal[0].face + compDeal[1].face === 'QA') {
+    
+    $('#dealerScore').empty()
     $('#dealerScore').append('Dealer has 21')
+    
 }else if(compDeal[0].face + compDeal[1].face === 'AJ' || compDeal[0].face + compDeal[1].face === 'JA') {
+    
+    $('#dealerScore').empty()
     $('#dealerScore').append('Dealer has 21') 
+    
 }else if(compDeal[0].face + compDeal[1].face === 'A10' || compDeal[0].face + compDeal[1].face === '10A') {
+    
+    $('#dealerScore').empty()
     $('#dealerScore').append('Dealer has 21') 
-}else
+    
+}else {
+    
     dealerValue = compDeal[0].value + compDeal[1].value
     $('#dealerScore').append(dealerValue)
-    
-
+}   
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Evaluating if Player's first two cards are blackjack
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 if(playerDeal[0].face + playerDeal[1].face === 'AK' || playerDeal[0].face + playerDeal[1].face === 'KA') {
-    $('#playerScore').append('Dealer has 21') 
+    $('#playerScore').empty()
+    $('#playerScore').append('Player has 21') 
+    return
 }else if(playerDeal[0].face + playerDeal[1].face === 'AQ' || playerDeal[0].face + playerDeal[1].face === 'QA') {
-    $('#playerScore').append('Dealer has 21') 
+    $('#playerScore').empty()
+    $('#playerScore').append('Player has 21') 
+    return
 }else if(playerDeal[0].face + playerDeal[1].face === 'AJ' || playerDeal[0].face + playerDeal[1].face === 'JA') {
-    $('#playerScore').append('Dealer has 21')
+    $('#playerScore').empty()
+    $('#playerScore').append('Player has 21')
+    return
 }else if(playerDeal[0].face + playerDeal[1].face === 'A10' || playerDeal[0].face + playerDeal[1].face === '10A') {
-    $('#playerScore').append('Dealer has 21')
+    $('#playerScore').empty()
+    $('#playerScore').append('Player has 21')
+    return
 }else 
     playerValue = playerDeal[0].value + playerDeal[1].value
     $('#playerScore').append(playerValue)
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Determining Dealer's score if it has an ace
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+// if(compDeal[0].face === 'A' && compDeal[1].face ==='A') {
+//     console.log('458')
+//     $('#dealerScore').text('Dealer has 2 or 12')
+
+// }else if(compDeal[0].face === 'A') {
+//     console.log('462')
+//     $('#dealerScore').append(compDeal[0].value1 + compDeal[1].value) + ' or ' + (compDeal[0].value11 + compDeal[1].value)
+
+// }else if(compDeal[1].face === 'A') {
+//     console.log('465')
+//     $('#dealerScore').append(compDeal[1].value1 + compDeal[0].value) + ' or ' + (compDeal[1].value11 + compDeal[0].value)
+// }
+
 }
+
+
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Calling the Buttons
@@ -456,4 +507,4 @@ $deal.on('click', deal)
 
 
 
-})
+});
