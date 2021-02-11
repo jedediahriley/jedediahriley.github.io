@@ -19,6 +19,7 @@ let playerDeal = [];
 let compDeal = [];
 let compScore;
 let playerScore;
+let playerValue;
 
 const Deck = [
     ace = {
@@ -441,9 +442,14 @@ const deal = () => {
         compDeal.push(fullDeck.pop())
         const $player = $('#player')
         $player.append('<div class = "playerCards">' + playerDeal[i].face +'</div>')
+        $player.append('<div class = "playerCards">' + playerDeal[i].suit +'</div>')
         const $dealer = $('#dealer')
         $dealer.append('<div class ="dealerCards">' + compDeal[i].face + '</div>')
+        $dealer.append('<div class ="dealerCards">' + compDeal[i].suit + '</div>')
         }
+
+       console.log(playerValue = playerDeal[0].value + playerDeal[1].value)
+        
         console.log(playerDeal)
         console.log(compDeal)
 }
@@ -556,7 +562,7 @@ $( () => {
     const $hit = $('#hit')
     $hit.on('click', playerHit)
 
-    computerHit()
+    
     
 
 })
