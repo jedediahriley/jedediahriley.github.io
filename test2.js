@@ -363,6 +363,39 @@ const begin = () => {
     console.log(fullDeck)
 }
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Dealing the cards
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+const deal = () => {
+        
+    $('#player').empty()
+    $('#dealer').empty()
+    $('#player').text('Player')
+    $('#dealer').text('Dealer')
+    playerDeal = [];
+    compDeal = [];
+    // $('#dealer > div:first').remove().appendTo($('discard'))
+
+for(let i = 0; i < 2; i++) {
+console.log(fullDeck)
+playerDeal.push(fullDeck.pop())
+compDeal.push(fullDeck.pop())
+const $player = $('#player')
+$player.append('<div class = "playerCards">' + playerDeal[i].face +'</div>')
+$player.append('<div class = "playerCards">' + playerDeal[i].suit +'</div>')
+const $dealer = $('#dealer')
+$dealer.append('<div class ="dealerCards">' + compDeal[i].face + '</div>')
+$dealer.append('<div class ="dealerCards">' + compDeal[i].suit + '</div>')
+}
+
+playerValue = playerDeal[0].value + playerDeal[1].value
+$('#playerScore').append(playerValue)
+dealerValue = compDeal[0].value + compDeal[1].value
+$('#dealerScore').append(dealerValue)
+
+console.log(playerDeal)
+console.log(compDeal)
+}
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Calling the Buttons
@@ -374,6 +407,12 @@ Begin Game Button
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 const $begin = $('#begin')
 $begin.on('click', begin)
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Deal Button
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+const $deal = $('#deal')
+$deal.on('click', deal)
 
 
 
