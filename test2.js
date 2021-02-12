@@ -488,7 +488,7 @@ const hit = () => {
     playerHit.push(fullDeck.pop())
     $('#player').append(playerHit[0].face)
     $('#player').append(playerHit[0].suit)
-    console.log(playerHit.value)
+    
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Hit if player has A/A
@@ -513,8 +513,55 @@ Hit if player has A/off
     $('#playerScore').append((aOne) + ' or ' + (aTwo))
     
 }
+}
+
+const stand = () => {
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Hit if dealer has A/A
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    if(compDeal[0].face === 'A' && compDeal[1].face ==='A') {
+        $('#dealerScore').empty()
+        $('#dealerScore').append((compDeal[0].value1 + compHit.value) + ' or ' + (compDeal[1].value11 + compHit.value))
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Hit if player has A/off
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    }else if(compDeal[0].face === 'A') {
+        $('#dealerScore').empty()
+        $('#dealerScore').text('Player Score')
+        let aOne = (compDeal[0].value1 + compDeal[1].value) + compHit[0].value
+        let aTwo = (compDeal[0].value11 + compDeal[1].value) + compHit[0].value
+        $('#dealerScore').append((aOne) + ' or ' + (aTwo))
+    }else if(compDeal[1].face === 'A') {
+        $('#dealerScore').empty()
+        $('#dealerScore').text('Player Score')
+        let aOne = (compDeal[1].value1 + compDeal[0].value) + compHit[0].value
+        let aTwo = (compDeal[1].value11 + compDeal[0].value) + compHit[0].value
+        $('#playerScore').append((aOne) + ' or ' + (aTwo))
+    
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Evaluate to see if dealer hits
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    
+if(compScore > 16) {
+    console.log('523')
+    alert('Dealer Stands')
+    return
+}else {
+    console.log('527')
+    compHit.push(fullDeck.pop())
+    $('#dealer').append(compHit[0].face)
+    $('#dealer').append(compHit[0].suit)
+    
+}
 
 }
+
+
+
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -541,7 +588,10 @@ Hit Button
 const $hit = $('#hit')
 $hit.on('click', hit)
 
-
-
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stand
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+const $stand = $('#stand')
+$stand.on('click', stand)
 
 });
