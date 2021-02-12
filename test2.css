@@ -2,3 +2,15 @@ body {
     background: green;
 }
 
+#player {
+    background: white;
+    width: 40%;
+    text-align: center;
+}
+
+#dealer {
+    
+    background: oldlace;
+    width: 40%;
+    text-align: center;
+}

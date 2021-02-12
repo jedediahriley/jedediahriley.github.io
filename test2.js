@@ -408,6 +408,7 @@ if(compDeal[0].face === 'A' && compDeal[1].face ==='A') {
     $('#dealerScore').append((compDeal[0].value1 + compDeal[1].value) + ' or ' + (compDeal[0].value11 + compDeal[1].value))
 }else if(compDeal[1].face === 'A') { 
     $('#dealerScore').append((compDeal[1].value1 + compDeal[0].value) + ' or ' + (compDeal[1].value11 + compDeal[0].value))
+
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -431,21 +432,33 @@ if(compDeal[0].face + compDeal[1].face === 'AK' || compDeal[0].face + compDeal[1
     
     $('#dealerScore').empty()
     $('#dealerScore').append('Dealer has 21')
+    alert('Dealer has 21')
+        $('#dealerScore').empty()
+        $('#playerScore').empty()
     
 }else if(compDeal[0].face + compDeal[1].face === 'AQ' || compDeal[0].face + compDeal[1].face === 'QA') {
     
     $('#dealerScore').empty()
     $('#dealerScore').append('Dealer has 21')
+    alert('Dealer has 21')
+        $('#dealerScore').empty()
+        $('#playerScore').empty()
     
 }else if(compDeal[0].face + compDeal[1].face === 'AJ' || compDeal[0].face + compDeal[1].face === 'JA') {
     
     $('#dealerScore').empty()
     $('#dealerScore').append('Dealer has 21') 
+    alert('Dealer has 21')
+        $('#dealerScore').empty()
+        $('#playerScore').empty()
     
 }else if(compDeal[0].face + compDeal[1].face === 'A10' || compDeal[0].face + compDeal[1].face === '10A') {
     
     $('#dealerScore').empty()
     $('#dealerScore').append('Dealer has 21') 
+    alert('Dealer has 21')
+        $('#dealerScore').empty()
+        $('#playerScore').empty()
     
 }else {
     
@@ -513,6 +526,10 @@ Hit if player has A/off
     $('#playerScore').append((aOne) + ' or ' + (aTwo))
     
 }
+
+    $('#playerScore').empty()
+    $('#playerScore').text('Player Score')
+    $('#playerScore').append(playerDeal[0].value + playerDeal[1].value + playerHit[0].value)
 }
 
 const stand = () => {
@@ -524,6 +541,9 @@ Hit if dealer has A/A
     if(compDeal[0].face === 'A' && compDeal[1].face ==='A') {
         $('#dealerScore').empty()
         $('#dealerScore').append((compDeal[0].value1 + compHit.value) + ' or ' + (compDeal[1].value11 + compHit.value))
+        alert('Dealer has 21')
+        $('#dealerScore').empty()
+        $('#playerScore').empty()
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Hit if player has A/off
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -533,30 +553,42 @@ Hit if player has A/off
         let aOne = (compDeal[0].value1 + compDeal[1].value) + compHit[0].value
         let aTwo = (compDeal[0].value11 + compDeal[1].value) + compHit[0].value
         $('#dealerScore').append((aOne) + ' or ' + (aTwo))
+        alert('Dealer has 21')
+        $('#dealerScore').empty()
+        $('#playerScore').empty()
     }else if(compDeal[1].face === 'A') {
         $('#dealerScore').empty()
         $('#dealerScore').text('Player Score')
         let aOne = (compDeal[1].value1 + compDeal[0].value) + compHit[0].value
         let aTwo = (compDeal[1].value11 + compDeal[0].value) + compHit[0].value
-        $('#playerScore').append((aOne) + ' or ' + (aTwo))
+        $('#dealerScore').append((aOne) + ' or ' + (aTwo))
+        alert('Dealer has 21')
+        $('#dealerScore').empty()
+        $('#playerScore').empty()
     
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Evaluate to see if dealer hits
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-    
-if(compScore > 16) {
-    console.log('523')
-    alert('Dealer Stands')
-    return
-}else {
-    console.log('527')
+
+if(compDeal[0].value + compDeal[1].value < 17) {
+    compscore = compDeal[0].value + compDeal[1].value
     compHit.push(fullDeck.pop())
-    $('#dealer').append(compHit[0].face)
-    $('#dealer').append(compHit[0].suit)
-    
+    $('#dealerScore').empty()
+$('#dealerScore').append(compScore)
+} else {
+
+    alert('dealer stands')
+
 }
+
+    if($('dealerScore') > $('playerScore'))  {
+        alert('dealer wins')
+
+    }else {
+        alert('player wins')
+    }
 
 }
 
