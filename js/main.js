@@ -540,8 +540,12 @@ Hit if player has A/off
     $('#playerScore').text('Player Score')
     $('#playerScore').append(playerDeal[0].value + playerDeal[1].value + playerHit[0].value)
     playerHitValue = playerDeal[0].value + playerDeal[1].value + playerHit[0].value
-    if(playerHitValue > 21)
+    console.log(playerHitValue)
+    if(playerHitValue > 21) {
         alert('Player Busts!')
+        $('#hit').attr('disabled', true);
+        $('#stand').attr('disabled', true);
+    }
 }
 
 const stand = () => {
