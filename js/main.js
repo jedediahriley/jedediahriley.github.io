@@ -559,16 +559,16 @@ Hit if player has A/off
 const stand = () => {
     if(dealerValue >17) {
         if(dealerValue > playerValue)  {
-            console.log('562')
+            
             alert('dealer wins')
             return
     
         }else if(dealerValue == playerValue) {
-            console.log('567')
+            
             alert('player Ties')
             return
         }else {
-            console.log('571')
+           
             alert('player wins')
             return
     }
@@ -614,7 +614,7 @@ Hit if dealer has A/off
         $('#dealerScore').append((aOne) + ' or ' + (aTwo))
         alert('Dealer has 21')
         $('#dealerScore').empty()
-        // $('#playerScore').empty()
+        
     }else if(compDeal[1].face === 'A') {
         $('#dealerScore').empty()
         $('#dealerScore').text('DealerScore')
@@ -623,7 +623,7 @@ Hit if dealer has A/off
         $('#dealerScore').append((aOne) + ' or ' + (aTwo))
         alert('Dealer has 21')
         $('#dealerScore').empty()
-        // $('#playerScore').empty()
+        
     
 }
 
@@ -632,7 +632,7 @@ Evaluate to see if dealer hits
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 if(compDeal[0].value + compDeal[1].value < 17) {
-    console.log('635')
+    
    
     compScore = compDeal[0].value + compDeal[1].value
     console.log(compScore)
@@ -644,28 +644,22 @@ if(compDeal[0].value + compDeal[1].value < 17) {
     $('#dealerScore').empty()
     $('#dealerScore').text('Dealer Score')
     $('#dealerScore').append(dealerScoreEval)
+        if(dealerScoreEval > playerScore){
+            alert('Dealer Wins')
+        }else if(dealerScoreEval == playerScore)
+            alert('player ties')
+        }else {
+            alert('player wins')
+        }
     return
 } else {
-    console.log('648')
+    
     alert('dealer stands')
     return
 
 }
 
-// if(dealerScoreEval > playerHitValue)  {
-//     console.log('637')
-//     alert('dealer wins')
-//     return
 
-// }else if(dealerScoreEval == playerHitValue) {
-//     console.log('641')
-//     alert('player Ties')
-//     return
-// }else {
-//     console.log('644')
-//     alert('player wins')
-//     return
-// }
 
 }
 
