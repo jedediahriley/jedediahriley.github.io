@@ -557,6 +557,22 @@ Hit if player has A/off
 }
 
 const stand = () => {
+    if(dealerValue >17) {
+        if(dealerValue > playerValue)  {
+            console.log('562')
+            alert('dealer wins')
+            return
+    
+        }else if(dealerValue == playerValue) {
+            console.log('567')
+            alert('player Ties')
+            return
+        }else {
+            console.log('571')
+            alert('player wins')
+            return
+    }
+    }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 evaluating Dealers score
@@ -616,7 +632,7 @@ Evaluate to see if dealer hits
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 if(compDeal[0].value + compDeal[1].value < 17) {
-    console.log('619')
+    console.log('635')
    
     compScore = compDeal[0].value + compDeal[1].value
     console.log(compScore)
@@ -628,26 +644,28 @@ if(compDeal[0].value + compDeal[1].value < 17) {
     $('#dealerScore').empty()
     $('#dealerScore').text('Dealer Score')
     $('#dealerScore').append(dealerScoreEval)
+    return
 } else {
-
+    console.log('648')
     alert('dealer stands')
+    return
 
 }
 
-if(dealerScoreEval > playerHitValue)  {
-    console.log('637')
-    alert('dealer wins')
-    return
+// if(dealerScoreEval > playerHitValue)  {
+//     console.log('637')
+//     alert('dealer wins')
+//     return
 
-}else if(dealerScoreEval == playerHitValue) {
-    console.log('641')
-    alert('player Ties')
-    return
-}else {
-    console.log('644')
-    alert('player wins')
-    return
-}
+// }else if(dealerScoreEval == playerHitValue) {
+//     console.log('641')
+//     alert('player Ties')
+//     return
+// }else {
+//     console.log('644')
+//     alert('player wins')
+//     return
+// }
 
 }
 
