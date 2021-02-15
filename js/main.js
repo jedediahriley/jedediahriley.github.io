@@ -15,6 +15,7 @@ let playerHit = [];
 let compHit = [];
 let playerHitValue;
 let dealerHitValue;
+let dealerScoreEval;
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The Deck of Cards
@@ -562,17 +563,20 @@ evaluating Dealers score
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 compScore = compDeal[0].value + compDeal[1].value
 
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Loop determining if dealer hits or stands
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-while(compScore < 17){
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Dealer taking a card
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 dealerHitValue = fullDeck.pop()
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Loop determining if dealer hits or stands
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+while(compScore < 17){
+
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Hit if dealer has A/A
@@ -612,28 +616,44 @@ Evaluate to see if dealer hits
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 if(compDeal[0].value + compDeal[1].value < 17) {
+    console.log('619')
+   
     compScore = compDeal[0].value + compDeal[1].value
-    compHit.push(fullDeck.pop())
+    console.log(compScore)
+    console.log(dealerHitValue.value)
+    dealerScoreEval = compScore + dealerHitValue.value
+    console.log(dealerScoreEval)
+    
+
     $('#dealerScore').empty()
-$('#dealerScore').append(compScore)
+    $('#dealerScore').text('Dealer Score')
+    $('#dealerScore').append(dealerScoreEval)
 } else {
 
     alert('dealer stands')
 
 }
 
-    
+if(dealerScoreEval > playerHitValue)  {
+    console.log('637')
+    alert('dealer wins')
+    return
+
+}else if(dealerScoreEval == playerHitValue) {
+    console.log('641')
+    alert('player Ties')
+    return
+}else {
+    console.log('644')
+    alert('player wins')
+    return
+}
 
 }
 
-if($('dealerScore') > $('playerScore'))  {
-        alert('dealer wins')
-
-    }else {
-        alert('player wins')
-    }
-
 }
+
+
 
 
 
