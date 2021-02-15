@@ -557,37 +557,53 @@ Hit if player has A/off
 
 const stand = () => {
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+evaluating Dealers score
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+compScore = compDeal[0].value + compDeal[1].value
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Loop determining if dealer hits or stands
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+while(compScore < 17){
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Dealer taking a card
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+dealerHitValue = fullDeck.pop()
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Hit if dealer has A/A
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     if(compDeal[0].face === 'A' && compDeal[1].face ==='A') {
-       dealerHitValue = fullDeck.pop()
+       
        $('#dealerScore').empty()
        $('#dealerScore').text('Dealer Score')
        $('#dealerScore').append((compDeal[0].value1 + dealerHitValue) + " or "  + (compDeal[1].value11 + dealerHitValue)) 
     
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Hit if player has A/off
+Hit if dealer has A/off
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     }else if(compDeal[0].face === 'A') {
         $('#dealerScore').empty()
-        $('#dealerScore').text('Player Score')
-        let aOne = (compDeal[0].value1 + compDeal[1].value) + compHit[0].value
-        let aTwo = (compDeal[0].value11 + compDeal[1].value) + compHit[0].value
+        $('#dealerScore').text('Dealer Score')
+        let aOne = (compDeal[0].value1 + compDeal[1].value) + dealerHitValue
+        let aTwo = (compDeal[0].value11 + compDeal[1].value) + dealerHitValue
         $('#dealerScore').append((aOne) + ' or ' + (aTwo))
         alert('Dealer has 21')
         $('#dealerScore').empty()
-        $('#playerScore').empty()
+        // $('#playerScore').empty()
     }else if(compDeal[1].face === 'A') {
         $('#dealerScore').empty()
-        $('#dealerScore').text('Player Score')
-        let aOne = (compDeal[1].value1 + compDeal[0].value) + compHit[0].value
-        let aTwo = (compDeal[1].value11 + compDeal[0].value) + compHit[0].value
+        $('#dealerScore').text('DealerScore')
+        let aOne = (compDeal[1].value1 + compDeal[0].value) + dealerHitValue
+        let aTwo = (compDeal[1].value11 + compDeal[0].value) + dealerHitValue
         $('#dealerScore').append((aOne) + ' or ' + (aTwo))
         alert('Dealer has 21')
         $('#dealerScore').empty()
-        $('#playerScore').empty()
+        // $('#playerScore').empty()
     
 }
 
@@ -596,7 +612,7 @@ Evaluate to see if dealer hits
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 if(compDeal[0].value + compDeal[1].value < 17) {
-    compscore = compDeal[0].value + compDeal[1].value
+    compScore = compDeal[0].value + compDeal[1].value
     compHit.push(fullDeck.pop())
     $('#dealerScore').empty()
 $('#dealerScore').append(compScore)
@@ -606,7 +622,11 @@ $('#dealerScore').append(compScore)
 
 }
 
-    if($('dealerScore') > $('playerScore'))  {
+    
+
+}
+
+if($('dealerScore') > $('playerScore'))  {
         alert('dealer wins')
 
     }else {
