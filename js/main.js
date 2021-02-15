@@ -14,6 +14,7 @@ let dealerValue;
 let playerHit = [];
 let compHit = [];
 let playerHitValue;
+let dealerHitValue;
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The Deck of Cards
@@ -561,11 +562,11 @@ const stand = () => {
 Hit if dealer has A/A
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     if(compDeal[0].face === 'A' && compDeal[1].face ==='A') {
-        $('#dealerScore').empty()
-        $('#dealerScore').append((compDeal[0].value1 + compHit.value) + ' or ' + (compDeal[1].value11 + compHit.value))
-        alert('Dealer has 21')
-        $('#dealerScore').empty()
-        $('#playerScore').empty()
+       dealerHitValue = fullDeck.pop()
+       $('#dealerScore').empty()
+       $('#dealerScore').text('Dealer Score')
+       $('#dealerScore').append((compDeal[0].value1 + dealerHitValue) + " or "  + (compDeal[1].value11 + dealerHitValue)) 
+    
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Hit if player has A/off
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
