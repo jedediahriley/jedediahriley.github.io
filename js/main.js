@@ -13,6 +13,7 @@ let dealerScore;
 let dealerValue;
 let playerHit = [];
 let compHit = [];
+let playerHitValue;
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The Deck of Cards
@@ -433,32 +434,36 @@ if(compDeal[0].face + compDeal[1].face === 'AK' || compDeal[0].face + compDeal[1
     $('#dealerScore').empty()
     $('#dealerScore').append('Dealer has 21')
     alert('Dealer has 21')
-        $('#dealerScore').empty()
-        $('#playerScore').empty()
+    return
+        // $('#dealerScore').empty()
+        // $('#playerScore').empty()
     
 }else if(compDeal[0].face + compDeal[1].face === 'AQ' || compDeal[0].face + compDeal[1].face === 'QA') {
     
     $('#dealerScore').empty()
     $('#dealerScore').append('Dealer has 21')
     alert('Dealer has 21')
-        $('#dealerScore').empty()
-        $('#playerScore').empty()
+    return
+        // $('#dealerScore').empty()
+        // $('#playerScore').empty()
     
 }else if(compDeal[0].face + compDeal[1].face === 'AJ' || compDeal[0].face + compDeal[1].face === 'JA') {
     
     $('#dealerScore').empty()
     $('#dealerScore').append('Dealer has 21') 
     alert('Dealer has 21')
-        $('#dealerScore').empty()
-        $('#playerScore').empty()
+    return
+        // $('#dealerScore').empty()
+        // $('#playerScore').empty()
     
 }else if(compDeal[0].face + compDeal[1].face === 'A10' || compDeal[0].face + compDeal[1].face === '10A') {
     
     $('#dealerScore').empty()
     $('#dealerScore').append('Dealer has 21') 
     alert('Dealer has 21')
-        $('#dealerScore').empty()
-        $('#playerScore').empty()
+    return
+        // $('#dealerScore').empty()
+        // $('#playerScore').empty()
     
 }else {
     
@@ -472,18 +477,22 @@ Evaluating if Player's first two cards are blackjack
 if(playerDeal[0].face + playerDeal[1].face === 'AK' || playerDeal[0].face + playerDeal[1].face === 'KA') {
     $('#playerScore').empty()
     $('#playerScore').append('Player has 21') 
+    alert('Player has Blackjack')
     return
 }else if(playerDeal[0].face + playerDeal[1].face === 'AQ' || playerDeal[0].face + playerDeal[1].face === 'QA') {
     $('#playerScore').empty()
     $('#playerScore').append('Player has 21') 
+    alert('Player has Blackjack')
     return
 }else if(playerDeal[0].face + playerDeal[1].face === 'AJ' || playerDeal[0].face + playerDeal[1].face === 'JA') {
     $('#playerScore').empty()
     $('#playerScore').append('Player has 21')
+    alert('Player has Blackjack')
     return
 }else if(playerDeal[0].face + playerDeal[1].face === 'A10' || playerDeal[0].face + playerDeal[1].face === '10A') {
     $('#playerScore').empty()
     $('#playerScore').append('Player has 21')
+    alert('Player has Blackjack')
     return
 }else {
     playerValue = playerDeal[0].value + playerDeal[1].value
@@ -530,6 +539,9 @@ Hit if player has A/off
     $('#playerScore').empty()
     $('#playerScore').text('Player Score')
     $('#playerScore').append(playerDeal[0].value + playerDeal[1].value + playerHit[0].value)
+    playerHitValue = playerDeal[0].value + playerDeal[1].value + playerHit[0].value
+    if(playerHitValue > 21)
+        alert('Player Busts!')
 }
 
 const stand = () => {
