@@ -651,8 +651,8 @@ if(compDeal[0].value + compDeal[1].value < 17) {
         }else {
             alert('player wins')
         }
-    return
-} else {
+     return
+}
     
     alert('dealer stands')
     return
@@ -661,9 +661,9 @@ if(compDeal[0].value + compDeal[1].value < 17) {
 
 
 
-}
 
-}
+
+
 
 
 
